@@ -1,0 +1,20 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "NYT article scrubber",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mgusmano84/NYT-React-Search.git"
+  },
+  "author": "Matthew Gusmano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mgusmano84/NYT-React-Search/issues"
+  },
+  "homepage": "https://github.com/mgusmano84/NYT-React-Search#readme"
+}
