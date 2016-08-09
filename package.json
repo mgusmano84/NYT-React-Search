@@ -16,5 +16,16 @@
   "bugs": {
     "url": "https://github.com/mgusmano84/NYT-React-Search/issues"
   },
-  "homepage": "https://github.com/mgusmano84/NYT-React-Search#readme"
+  "homepage": "https://github.com/mgusmano84/NYT-React-Search#readme",
+  "dependencies": {
+    "axios": "^0.13.1",
+    "body-parser": "^1.15.2",
+    "core.js": "^0.4.2",
+    "express": "^4.14.0",
+    "mongojs": "^2.4.0",
+    "mongoose": "^4.5.8",
+    "morgan": "^1.7.0",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0"
+  }
 }
