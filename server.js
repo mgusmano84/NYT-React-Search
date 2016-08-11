@@ -5,7 +5,7 @@ var mongojs = require('mongojs');
 
 // Create Instance of Express
 var app = express();
-var PORT = process.env.PORT || 3000; // Sets an initial port. We'll use this later in our listener
+var PORT = 3000; // Sets an initial port. We'll use this later in our listener process.env.PORT || 
 
 // Run Morgan for Logging
 app.use(logger('dev'));
@@ -36,6 +36,8 @@ db.on('error', function (err) {
 app.get('/', function(req, res){
   res.sendFile('./public/index.html');
 })
+
+///******
 
 // // This is the route we will send GET requests to retrieve our most recent search data.
 // // We will call this route the moment our page gets rendered
