@@ -2,7 +2,7 @@ var React = require('react');
 
 // Here we include all of the sub-components
 var Search = require('./children/search');
-// var Results = require('./children/results');
+var Results = require('./children/results');
 // var History = require('./children/savedarticles');
 
 // Helper Function
@@ -14,16 +14,30 @@ var main = React.createClass({
 	// Here we set a generic state associated with the number of clicks
 	getInitialState: function(){
 		return {
-			searchTerm: "",
-			results: "",
-			history: [] /*Note how we added in this history state variable*/
+			topic: "",
+			startyear: 0,
+			endyear: 0,
+			results: [],
+			history: []
 		}
 	},	
 
 	// This function allows childrens to update the parent.
-	setTerm: function(term){
+	setTopic: function(term){
 		this.setState({
-			searchTerm: term
+			topic: term
+		})
+	},
+
+	setStart: function(term){
+		this.setState({
+			startyear: term
+		})
+	},
+
+	setEnd: function(term){
+		this.setState({
+			endyear: term
 		})
 	},
 
@@ -50,15 +64,17 @@ var main = React.createClass({
 				</div>
 
 
-					<div classname="row">
-
+				<div classname="row">
 						
-						
-							<Search setTerm={this.setTerm}/>
+					<Search setTerm={this.setTerm}/>	
 
-						
+				</div>
 
-					</div>
+				<div classname="row">
+						
+					<Results setTerm={this.setTerm}/>	
+
+				</div>
 		</div>
 
 

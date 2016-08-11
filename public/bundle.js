@@ -21472,7 +21472,7 @@
 
 	// Here we include all of the sub-components
 	var Search = __webpack_require__(176);
-	// var Results = require('./children/results');
+	var Results = __webpack_require__(177);
 	// var History = require('./children/savedarticles');
 
 	// Helper Function
@@ -21486,16 +21486,30 @@
 		// Here we set a generic state associated with the number of clicks
 		getInitialState: function getInitialState() {
 			return {
-				searchTerm: "",
-				results: "",
-				history: [] /*Note how we added in this history state variable*/
+				topic: "",
+				startyear: 0,
+				endyear: 0,
+				results: [],
+				history: []
 			};
 		},
 
 		// This function allows childrens to update the parent.
-		setTerm: function setTerm(term) {
+		setTopic: function setTopic(term) {
 			this.setState({
-				searchTerm: term
+				topic: term
+			});
+		},
+
+		setStart: function setStart(term) {
+			this.setState({
+				startyear: term
+			});
+		},
+
+		setEnd: function setEnd(term) {
+			this.setState({
+				endyear: term
 			});
 		},
 
@@ -21537,6 +21551,11 @@
 					'div',
 					{ classname: 'row' },
 					React.createElement(Search, { setTerm: this.setTerm })
+				),
+				React.createElement(
+					'div',
+					{ classname: 'row' },
+					React.createElement(Results, { setTerm: this.setTerm })
 				)
 			);
 		}
@@ -21553,17 +21572,129 @@
 
 	var React = __webpack_require__(1);
 
-	// // Here we include all of the sub-components
-	// // var Form = require('./children/search');
-	// // var Results = require('./children/results');
-	// // var History = require('./children/savedarticles');
-
-	// // Helper Function
-	// // var helpers = require('./utils/helpers.js');
-
 	// // This is the main component. 
 	var search = React.createClass({
 		displayName: "search",
+
+
+		// Here we set a generic state associated with the number of clicks
+		getInitialState: function getInitialState() {
+			return {
+				searchTerm: "",
+				startYear: "",
+				endYear: ""
+			};
+		},
+
+		// This function will respond to the user input 
+		handleChangeTerm: function handleChangeTerm(event) {
+
+			// Here we create syntax to capture any change in text to the query terms (pre-search).
+			// See this Stack Overflow answer for more details: 
+			// http://stackoverflow.com/questions/21029999/react-js-identifying-different-inputs-with-one-onchange-handler
+			var newState = {};
+			newState[event.target.id] = event.target.value;
+			this.setState(newState);
+		},
+
+		// This function will respond to the user input 
+		handleChangeStartYear: function handleChangeStartYear(event) {
+
+			var newState = {};
+			newState[event.target.id] = event.target.value;
+			this.setState(newState);
+		},
+
+		// This function will respond to the user input 
+		handleChangeEndYear: function handleChangeEndYear(event) {
+
+			var newState = {};
+			newState[event.target.id] = event.target.value;
+			this.setState(newState);
+		},
+
+		// When a user submits... 
+		handleClick: function handleClick() {
+
+			console.log("CLICK");
+			console.log(this.state.term);
+
+			// Set the parent to have the search term
+			this.props.setTopic(this.state.searchTerm);
+			this.props.setStart(this.state.startYear);
+			this.props.setEnd(this.state.endYear);
+		},
+
+		// 	// Here we render the function
+		render: function render() {
+
+			return React.createElement(
+				"div",
+				{ className: "jumbotron" },
+				React.createElement(
+					"form",
+					null,
+					React.createElement(
+						"div",
+						{ className: "form-group" },
+						React.createElement(
+							"h4",
+							{ className: "" },
+							React.createElement(
+								"strong",
+								null,
+								"Topic"
+							)
+						),
+						React.createElement("input", { type: "text", className: "form-control text-center", id: "searchTerm", onChange: this.handleChangeTerm, required: true }),
+						React.createElement("br", null),
+						React.createElement(
+							"h4",
+							{ className: "" },
+							React.createElement(
+								"strong",
+								null,
+								"Start Year"
+							)
+						),
+						React.createElement("input", { type: "text", className: "form-control text-center", id: "startYear", onChange: this.handleChangeStartYear, required: true }),
+						React.createElement("br", null),
+						React.createElement(
+							"h4",
+							{ className: "" },
+							React.createElement(
+								"strong",
+								null,
+								"End Year"
+							)
+						),
+						React.createElement("input", { type: "text", className: "form-control text-center", id: "endYear", onChange: this.handleChangeEndYear, required: true }),
+						React.createElement("br", null),
+						React.createElement(
+							"button",
+							{ type: "button", className: "btn btn-primary", onClick: this.handleClick },
+							"Submit"
+						)
+					)
+				)
+			);
+		}
+	});
+
+	// // Export the component back for use in other files
+	module.exports = search;
+
+/***/ },
+/* 177 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(1);
+
+	// // This is the main component. 
+	var results = React.createClass({
+		displayName: "results",
 
 
 		// Here we set a generic state associated with the number of clicks
@@ -21595,57 +21726,16 @@
 				"div",
 				{ className: "jumbotron" },
 				React.createElement(
-					"form",
+					"h1",
 					null,
-					React.createElement(
-						"div",
-						{ className: "form-group" },
-						React.createElement(
-							"h4",
-							{ className: "" },
-							React.createElement(
-								"strong",
-								null,
-								"Topic"
-							)
-						),
-						React.createElement("input", { type: "text", className: "form-control text-center", id: "term", onChange: this.handleChange, required: true }),
-						React.createElement("br", null),
-						React.createElement(
-							"h4",
-							{ className: "" },
-							React.createElement(
-								"strong",
-								null,
-								"Start Year"
-							)
-						),
-						React.createElement("input", { type: "text", className: "form-control text-center", id: "term", onChange: this.handleChange, required: true }),
-						React.createElement("br", null),
-						React.createElement(
-							"h4",
-							{ className: "" },
-							React.createElement(
-								"strong",
-								null,
-								"End Year"
-							)
-						),
-						React.createElement("input", { type: "text", className: "form-control text-center", id: "term", onChange: this.handleChange, required: true }),
-						React.createElement("br", null),
-						React.createElement(
-							"button",
-							{ type: "button", className: "btn btn-primary", onClick: this.handleClick },
-							"Submit"
-						)
-					)
+					"test"
 				)
 			);
 		}
 	});
 
 	// // Export the component back for use in other files
-	module.exports = search;
+	module.exports = results;
 
 /***/ }
 /******/ ]);
