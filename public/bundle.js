@@ -21466,12 +21466,12 @@
 /* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	var React = __webpack_require__(1);
 
 	// Here we include all of the sub-components
-	// var Form = require('./children/search');
+	var Search = __webpack_require__(176);
 	// var Results = require('./children/results');
 	// var History = require('./children/savedarticles');
 
@@ -21480,7 +21480,7 @@
 
 	// This is the main component. 
 	var main = React.createClass({
-		displayName: "main",
+		displayName: 'main',
 
 
 		// Here we set a generic state associated with the number of clicks
@@ -21509,29 +21509,34 @@
 		render: function render() {
 
 			return React.createElement(
-				"div",
-				{ className: "container" },
+				'div',
+				{ className: 'container' },
 				React.createElement(
-					"div",
-					{ className: "row" },
+					'div',
+					{ className: 'row' },
 					React.createElement(
-						"div",
-						{ className: "jumbotron" },
+						'div',
+						{ className: 'jumbotron' },
 						React.createElement(
-							"h2",
-							{ className: "text-center" },
-							"Address Finder!"
+							'h2',
+							{ className: 'text-center' },
+							'New York Times Article Scrubber!'
 						),
 						React.createElement(
-							"p",
-							{ className: "text-center" },
+							'p',
+							{ className: 'text-center' },
 							React.createElement(
-								"em",
+								'em',
 								null,
-								"Enter a landmark to search for its exact address (ex: \"Eiffel Tower\")."
+								'Search for articles of your interest!'
 							)
 						)
 					)
+				),
+				React.createElement(
+					'div',
+					{ classname: 'row' },
+					React.createElement(Search, { setTerm: this.setTerm })
 				)
 			);
 		}
@@ -21539,6 +21544,108 @@
 
 	// Export the component back for use in other files
 	module.exports = main;
+
+/***/ },
+/* 176 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(1);
+
+	// // Here we include all of the sub-components
+	// // var Form = require('./children/search');
+	// // var Results = require('./children/results');
+	// // var History = require('./children/savedarticles');
+
+	// // Helper Function
+	// // var helpers = require('./utils/helpers.js');
+
+	// // This is the main component. 
+	var search = React.createClass({
+		displayName: "search",
+
+
+		// Here we set a generic state associated with the number of clicks
+		getInitialState: function getInitialState() {
+			return {
+				searchTerm: "",
+				results: "",
+				history: [] /*Note how we added in this history state variable*/
+			};
+		},
+
+		// This function allows childrens to update the parent.
+		setTerm: function setTerm(term) {
+			this.setState({
+				searchTerm: term
+			});
+		},
+
+		// 	// If the component changes (i.e. if a search is entered)... 
+
+
+		// 	// The moment the page renders get the History
+
+
+		// 	// Here we render the function
+		render: function render() {
+
+			return React.createElement(
+				"div",
+				{ className: "jumbotron" },
+				React.createElement(
+					"form",
+					null,
+					React.createElement(
+						"div",
+						{ className: "form-group" },
+						React.createElement(
+							"h4",
+							{ className: "" },
+							React.createElement(
+								"strong",
+								null,
+								"Topic"
+							)
+						),
+						React.createElement("input", { type: "text", className: "form-control text-center", id: "term", onChange: this.handleChange, required: true }),
+						React.createElement("br", null),
+						React.createElement(
+							"h4",
+							{ className: "" },
+							React.createElement(
+								"strong",
+								null,
+								"Start Year"
+							)
+						),
+						React.createElement("input", { type: "text", className: "form-control text-center", id: "term", onChange: this.handleChange, required: true }),
+						React.createElement("br", null),
+						React.createElement(
+							"h4",
+							{ className: "" },
+							React.createElement(
+								"strong",
+								null,
+								"End Year"
+							)
+						),
+						React.createElement("input", { type: "text", className: "form-control text-center", id: "term", onChange: this.handleChange, required: true }),
+						React.createElement("br", null),
+						React.createElement(
+							"button",
+							{ type: "button", className: "btn btn-primary", onClick: this.handleClick },
+							"Submit"
+						)
+					)
+				)
+			);
+		}
+	});
+
+	// // Export the component back for use in other files
+	module.exports = search;
 
 /***/ }
 /******/ ]);

@@ -1,7 +1,7 @@
 var React = require('react');
 
 // Here we include all of the sub-components
-// var Form = require('./children/search');
+var Search = require('./children/search');
 // var Results = require('./children/results');
 // var History = require('./children/savedarticles');
 
@@ -38,19 +38,31 @@ var main = React.createClass({
 
 		return(
 
-			<div className="container">
+		<div className="container">
 
 				<div className="row">
 
 					<div className="jumbotron">
-						<h2 className="text-center">Address Finder!</h2>
-						<p className="text-center"><em>Enter a landmark to search for its exact address (ex: "Eiffel Tower").</em></p>
+						<h2 className="text-center">New York Times Article Scrubber!</h2>
+						<p className="text-center"><em>Search for articles of your interest!</em></p>
 					</div>
 
+				</div>
 
-			</div>
 
-			</div>
+					<div classname="row">
+
+						
+						
+							<Search setTerm={this.setTerm}/>
+
+						
+
+					</div>
+		</div>
+
+
+			
 		)
 	}
 });
