@@ -21767,15 +21767,7 @@
 		// 	// Here we render the function
 		render: function render() {
 
-			return React.createElement(
-				"div",
-				{ className: "jumbotron" },
-				React.createElement(
-					"h1",
-					null,
-					"test"
-				)
-			);
+			return React.createElement("div", { className: "jumbotron" });
 		}
 	});
 

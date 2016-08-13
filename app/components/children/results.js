@@ -32,7 +32,7 @@ var results = React.createClass({
 		return(
 			<div className="jumbotron">
 
-				<h1>test</h1>
+				
 
 			</div>
 
