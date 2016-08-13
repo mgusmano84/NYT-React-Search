@@ -54,8 +54,8 @@ var search = React.createClass({
 		
 		// Set the parent to have the search term
 		this.props.setTopic(this.state.searchTerm);
-		this.props.setStart(this.state.startYear);
-		this.props.setEnd(this.state.endYear);
+		// this.props.setStart(this.state.startYear);
+		// this.props.setEnd(this.state.endYear);
 
 	},
 

@@ -6,7 +6,7 @@ var Results = require('./children/results');
 // var History = require('./children/savedarticles');
 
 // Helper Function
-// var helpers = require('./utils/helpers.js');
+var helpers = require('./utils/helpers.js');
 
 // This is the main component. 
 var main = React.createClass({
@@ -22,7 +22,7 @@ var main = React.createClass({
 		}
 	},	
 
-	// This function allows childrens to update the parent.
+	// This function allows childrens to update the parent.//
 	setTopic: function(term){
 		this.setState({
 			topic: term
@@ -119,7 +119,7 @@ var main = React.createClass({
 
 				<div classname="row">
 						
-					<Search setTerm={this.setTerm}/>	
+					<Search setTopic={this.setTopic}/>	
 
 				</div>
 
@@ -136,5 +136,5 @@ var main = React.createClass({
 	}
 });
 
-// Export the component back for use in other files
+// Export the component back for use in other files//
 module.exports = main;

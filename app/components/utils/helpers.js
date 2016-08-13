@@ -2,26 +2,26 @@
 var axios = require('axios');
 
 // Geocoder API
-var geocodeAPI = "059dc98209a841afa64b4c2e2988a613";
+var apiKey = "059dc98209a841afa64b4c2e2988a613";
 
 // Helper Functions (in this case the only one is runQuery)
 var helpers = {
 
-	// This function serves our purpose of running the query to geolocate. 
-	runQuery: function(topic, startyear, endyear){
+	// This function serves our purpose of running the query to geolocate. (startyear, endyear)
+	runQuery: function(topic){ 
 
 		console.log(topic);
-		console.log(startyear);
-		console.log(endyear);
+		// console.log(startyear);
+		// console.log(endyear);
 
 		//Figure out the geolocation
-		var queryURL = "http://api.opencagedata.com/geocode/v1/json?query=" + topic + "&pretty=1&key=" + geocodeAPI;
+		var queryURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=' + apiKey +'&q='+ topic;
 
 		return axios.get(queryURL)
 			.then(function(response){
 
 				console.log(response);
-				return response.data.results[0].formatted;
+				// return response.data.results[0].formatted;
 		})
 
 	},
@@ -38,7 +38,7 @@ var helpers = {
 	},
 
 	// This function posts new searches to our database.
-	postHistory: function(location){
+	postHistory: function(topic){
 
 		return axios.post('/api', {topic: topic})
 			.then(function(results){
