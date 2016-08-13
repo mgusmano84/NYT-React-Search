@@ -20,7 +20,7 @@ var helpers = {
 		return axios.get(queryURL)
 			.then(function(response){
 
-				console.log(response);
+				console.log("check" + response);
 				// return response.data.results[0].formatted;
 		})
 

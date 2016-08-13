@@ -117,21 +117,21 @@ var main = React.createClass({
 				</div>
 
 
-				<div classname="row">
+				<div className="row">
 						
 					<Search setTopic={this.setTopic}/>	
 
 				</div>
 
-				<div classname="row">
+				<div className="row">
 						
-					<Results setTerm={this.setTerm}/>	
+					<Results />	
 
 				</div>
 
-				<div classname="row">
+				<div className="row">
 						
-					<History setTerm={this.setTerm}/>	
+					<History />	
 
 				</div>
 

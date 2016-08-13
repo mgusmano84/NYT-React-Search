@@ -21594,18 +21594,18 @@
 				),
 				React.createElement(
 					'div',
-					{ classname: 'row' },
+					{ className: 'row' },
 					React.createElement(Search, { setTopic: this.setTopic })
 				),
 				React.createElement(
 					'div',
-					{ classname: 'row' },
-					React.createElement(Results, { setTerm: this.setTerm })
+					{ className: 'row' },
+					React.createElement(Results, null)
 				),
 				React.createElement(
 					'div',
-					{ classname: 'row' },
-					React.createElement(History, { setTerm: this.setTerm })
+					{ className: 'row' },
+					React.createElement(History, null)
 				)
 			);
 		}
@@ -21639,9 +21639,6 @@
 		// This function will respond to the user input 
 		handleChangeTerm: function handleChangeTerm(event) {
 
-			// Here we create syntax to capture any change in text to the query terms (pre-search).
-			// See this Stack Overflow answer for more details: 
-			// http://stackoverflow.com/questions/21029999/react-js-identifying-different-inputs-with-one-onchange-handler
 			var newState = {};
 			newState[event.target.id] = event.target.value;
 			this.setState(newState);
@@ -21866,7 +21863,7 @@
 
 			return axios.get(queryURL).then(function (response) {
 
-				console.log(response);
+				console.log("check" + response);
 				// return response.data.results[0].formatted;
 			});
 		},
